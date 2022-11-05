@@ -4,24 +4,26 @@
     <h2><b>List Of Blogs</b></h2>
 </center>
 
+
 @foreach (var item in Model)
 {
 
     <div class="container">
+        
         <div class="alert alert-success" role="alert">
-            <h1>   @Html.DisplayFor(modelItem => item.Title)</h1>
+            <h4>   @Html.DisplayFor(modelItem => item.Title)</h4>
 
-            <h1>@Html.DisplayFor(modelItem => item.Subject)</h1>
+            <h4>@Html.DisplayFor(modelItem => item.Subject)</h4>
 
 
 
-            <h1> @Html.DisplayFor(modelItem => item.DateOfCreation)</h1>
+            <h4> @Html.DisplayFor(modelItem => item.DateOfCreation)</h4>
 
             <div class="alert alert-danger" role="alert">
-                <h1> @Html.DisplayFor(modelItem => item.BlogUrl)</h1>
+                <h4> @Html.DisplayFor(modelItem => item.BlogUrl)</h4>
             </div>
 
-            <h1>  @Html.DisplayFor(modelItem => item.EmpEmailId)</h1>
+            <h4>  @Html.DisplayFor(modelItem => item.EmpEmailId)</h4>
         </div>
     </div>
 
