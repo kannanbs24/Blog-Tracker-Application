@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI_layer", "UI_layer\UI_lay
 		{B49EE9F4-6415-42AF-A825-7DF2999A3762} = {B49EE9F4-6415-42AF-A825-7DF2999A3762}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Test", "Unit Test\Unit Test.csproj", "{15939DC3-E6C9-4C33-81F6-CB1851B68AC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{078F7DBE-6971-49FD-A0F9-316A3F03631A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{078F7DBE-6971-49FD-A0F9-316A3F03631A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{078F7DBE-6971-49FD-A0F9-316A3F03631A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15939DC3-E6C9-4C33-81F6-CB1851B68AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15939DC3-E6C9-4C33-81F6-CB1851B68AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15939DC3-E6C9-4C33-81F6-CB1851B68AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15939DC3-E6C9-4C33-81F6-CB1851B68AC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
