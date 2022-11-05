@@ -1,45 +1,25 @@
 ﻿@model IEnumerable<UI_layer.Models.blogmodel>
 
+<center>
+    <h2><b>List Of Blogs</b></h2></center>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Subject)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfCreation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BlogUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmpEmailId)
-        </th> 
-        <th></th>
-    </tr>
+    @foreach (var item in Model)
+    {
+      
+           <div class="container">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfCreation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BlogUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmpEmailId)
-        </td>
-       
-    </tr>
-}
+               <h1>   @Html.DisplayFor(modelItem => item.Title)</h1>
 
-</table>
+               <h1>@Html.DisplayFor(modelItem => item.Subject)</h1>
+
+               <h1> @Html.DisplayFor(modelItem => item.DateOfCreation)</h1>
+
+               <h1> @Html.DisplayFor(modelItem => item.BlogUrl)</h1>
+
+               <h1>  @Html.DisplayFor(modelItem => item.EmpEmailId)</h1>
+           </div>
+      
+        <br/>
+        <br />
+    }
+
