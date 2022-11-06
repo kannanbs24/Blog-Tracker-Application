@@ -113,24 +113,56 @@ namespace Dal_lib
                 context.EmpInfos.Add(emp);
                 context.SaveChanges();
             }
-            public void EditEmp(string id, EmpInfo emp)
+        public EmpInfo Getempbyid(int id)
+        {
+            List<EmpInfo> s = context.EmpInfos.ToList();
+            EmpInfo r = s.Find(pr => pr.PassCode == id);
+            return r;
+        }
+        public bool DeleteEmployeeDetails(int id)
+        {
+            try
             {
-                var ans = context.EmpInfos.ToList().Find(temp => temp.EmailId == id);
-                context.EmpInfos.Remove(ans);
-                context.EmpInfos.Add(emp);
+
+                List<EmpInfo> s = context.EmpInfos.ToList();
+                EmpInfo r = s.Find(pr => pr.PassCode == id);
+
+                context.EmpInfos.Remove(r);
                 context.SaveChanges();
+                return true;
             }
-            public void RemoveEmp(string id)
+            catch (Exception ex)
             {
-                var ans = context.EmpInfos.ToList().Find(temp => temp.EmailId == id);
-                context.EmpInfos.Remove(ans);
-                context.SaveChanges();
+                return false;
             }
-            /// <summary>
-            /// ///////////////////
-            /// </summary>
-            /// <returns></returns>
-            public List<BlogInfo> GetAllblog()
+        }
+        public bool UpdateEmployeeDetails(int id, EmpInfo p)
+        {
+            try
+            {
+
+                List<EmpInfo> s = context.EmpInfos.ToList();
+                EmpInfo k = s.Find(pr => pr.PassCode == id);
+                k.PassCode = p.PassCode;
+                k.EmailId = p.EmailId;
+                k.Name = p.Name;
+                k.DateOfJoining = p.DateOfJoining;
+               
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+
+
+            }
+        }
+        /// <summary>
+        /// ///////////////////
+        /// </summary>
+        /// <returns></returns>
+        public List<BlogInfo> GetAllblog()
             {
                 return context.BlogInfos.ToList();
             }
@@ -139,22 +171,56 @@ namespace Dal_lib
                 context.BlogInfos.Add(m);
                 context.SaveChanges();
             }
-            public void Editbloag(int id, BlogInfo dept)
-            {
-                var ans = context.BlogInfos.ToList().Find(temp => temp.BlogId == id);
-                context.BlogInfos.Remove(ans);
-                context.BlogInfos.Add(dept);
-                context.SaveChanges();
-            }
-            public void Removebloag(int id)
-            {
-                var ans = context.BlogInfos.ToList().Find(temp => temp.BlogId == id);
-                context.BlogInfos.Remove(ans);
-                context.SaveChanges();
-            }
-
-
+        public BlogInfo Getblogbyid(int id)
+        {
+            List<BlogInfo> s = context.BlogInfos.ToList();
+            BlogInfo r = s.Find(pr => pr.BlogId == id);
+            return r;
         }
+        public bool UpdateBlogDetails(int id, BlogInfo p)
+        {
+            try
+            {
+
+                List<BlogInfo> s = context.BlogInfos.ToList();
+                BlogInfo k = s.Find(pr => pr.BlogId == id);
+
+                k.BlogId = p.BlogId;
+                k.Title = p.Title;
+                k.Subject = p.Subject;
+                k.DateOfCreation = p.DateOfCreation;
+                k.BlogUrl = p.BlogUrl;
+                k.EmpEmailId = p.EmpEmailId;
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+
+
+            }
+        }
+        public bool DeleteBlogDetails(int id)
+        {
+            try
+            {
+
+                List<BlogInfo> s = context.BlogInfos.ToList();
+                BlogInfo r = s.Find(pr => pr.BlogId == id);
+
+                context.BlogInfos.Remove(r);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+    }
     }
 
 

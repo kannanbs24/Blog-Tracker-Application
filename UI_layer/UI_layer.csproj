@@ -186,6 +186,12 @@
     <Content Include="Views\empui\Login.cshtml" />
     <Content Include="Views\blogui\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\empui\EditEmp.cshtml" />
+    <Content Include="Views\empui\DeleteEmp.cshtml" />
+    <Content Include="Views\blogui\DeleteBlog.cshtml" />
+    <Content Include="Views\blogui\EditBlog.cshtml" />
+    <Content Include="Views\empui\Edit.cshtml" />
+    <Content Include="Views\empui\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

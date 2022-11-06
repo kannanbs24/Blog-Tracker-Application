@@ -53,20 +53,20 @@ namespace blog_application.Controllers
         }
 
         // PUT api/<controller>/5
-        public void Putemp(string id, [FromBody] empmodel value)
+        public void Putemp(int id, [FromBody] empmodel value)
         {
             EmpInfo emp = new EmpInfo();
             emp.EmailId = value.EmailId;
             emp.Name = value.Name;
             emp.DateOfJoining = value.DateOfJoining;
             emp.PassCode = value.PassCode;
-            log.EditEmp(id, emp);
+            log.UpdateEmployeeDetails(id, emp);
         }
 
         // DELETE api/<controller>/5
-        public void Deleteemp(string id)
+        public void Deleteemp(int id)
         {
-            log.RemoveEmp(id);
+            log.DeleteEmployeeDetails(id);
         }
 
     }

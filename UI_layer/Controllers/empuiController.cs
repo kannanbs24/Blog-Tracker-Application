@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using UI_layer.Models;
 using Dal_lib;
+using System.Runtime.Remoting.Messaging;
+
 namespace UI_layer.Controllers
 {
     public class empuiController : Controller
@@ -100,6 +102,96 @@ namespace UI_layer.Controllers
 
             return RedirectToAction("Index");
         }
+
+        operation op = null;
+        public empuiController()
+        {
+            op = new operation();
+        }
+      
+        public ActionResult Edit(int id)
+        {
+            var emp = op.Getempbyid(id);
+            empmodel model = new empmodel();
+            model.PassCode = id;
+            model.EmailId=emp.EmailId;
+            model.Name = emp.Name;
+            model.DateOfJoining = emp.DateOfJoining;
+           
+            return View(model);
+        }
+
+        // POST: Emp/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                var emp = op.Getempbyid(id);
+                emp.EmailId = Request["EmailId"].ToString();
+              
+                emp.Name = Request["Name"].ToString();
+                emp.DateOfJoining = Convert.ToDateTime(Request["DateOfJoining"]);
+                emp.PassCode = Convert.ToInt32(Request["PassCode"]);
+                bool ans =op.UpdateEmployeeDetails(id, emp);
+                if (ans)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Emp/Delete/5
+        public ActionResult Delete(int id)
+        {
+            var emp = op.Getempbyid(id);
+           empmodel model = new empmodel();
+            model.PassCode = id;
+            model.EmailId = emp.EmailId;
+            model.Name = emp.Name;
+            model.DateOfJoining = emp.DateOfJoining;
+          
+            return View(model);
+        }
+
+        // POST: Emp/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                var dataFound = op.Getempbyid(id);
+                if (dataFound != null)
+                {
+                    bool ans = op.DeleteEmployeeDetails(id);
+                    if (ans)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return View();
+                    }
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 using UI_layer.Models;
@@ -105,6 +106,96 @@ namespace UI_layer.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+        operation op = null;
+        public bloguiController()
+        {
+            op = new operation();
+        }
+        public ActionResult EditBlog(int id)
+        {
+            var emp = op.Getblogbyid(id);
+            blogmodel model = new blogmodel();
+            model.BlogId = id;
+            model.Title = emp.Title;
+            model.Subject = emp.Subject;
+            model.DateOfCreation = emp.DateOfCreation;
+            model.BlogUrl = emp.BlogUrl;
+            model.EmpEmailId = emp.EmpEmailId;
+            return View(model);
+        }
+
+        // POST: Emp/Edit/5
+        [HttpPost]
+        public ActionResult EditBlog(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                var emp = op.Getblogbyid(id);
+                emp.BlogId = Convert.ToInt32(Request["BlogId"]);
+                emp.Title = Request["Title"].ToString();
+                emp.Subject = Request["Subject"].ToString();
+                emp.DateOfCreation = Convert.ToDateTime(Request["DateOfCreation"]);
+                emp.BlogUrl = Request["BlogUrl"].ToString();
+                emp.EmpEmailId = Request["EmpEmailId"].ToString();
+                bool ans = op.UpdateBlogDetails(id, emp);
+                if (ans)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Emp/Delete/5
+        public ActionResult DeleteBlog(int id)
+        {
+            var emp = op.Getblogbyid(id);
+            blogmodel model = new blogmodel();
+            model.BlogId = id;
+            model.Title = emp.Title;
+            model.Subject = emp.Subject;
+            model.DateOfCreation = emp.DateOfCreation;
+            model.BlogUrl = emp.BlogUrl;
+            model.EmpEmailId = emp.EmpEmailId;
+            return View(model);
+        }
+
+        // POST: Emp/Delete/5
+        [HttpPost]
+        public ActionResult DeleteBlog(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                var dataFound = op.Getblogbyid(id);
+                if (dataFound != null)
+                {
+                    bool ans = op.DeleteBlogDetails(id);
+                    if (ans)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return View();
+                    }
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

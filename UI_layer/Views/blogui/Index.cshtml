@@ -42,9 +42,9 @@
                 @Html.DisplayFor(modelItem => item.EmpEmailId)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BlogId }) |
+                @Html.ActionLink("Edit", "EditBlog", new { id = item.BlogId }) |
 
-                @Html.ActionLink("Delete", "Delete", new { id = item.BlogId })
+                @Html.ActionLink("Delete", "DeleteBlog", new { id = item.BlogId })
             </td>
         </tr>
     }

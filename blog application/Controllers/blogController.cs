@@ -63,13 +63,13 @@ namespace blog_application.Controllers
             dept.DateOfCreation = value.DateOfCreation;
             dept.BlogUrl = value.BlogUrl;
             dept.EmpEmailId = value.EmpEmailId;
-            log.Editbloag(id, dept);
+            log.UpdateBlogDetails(id, dept);
         }
 
         // DELETE api/<controller>/5
         public void Deleteblog(int id)
         {
-            log.Removebloag(id);
+            log.DeleteBlogDetails(id);
         }
     }
 }

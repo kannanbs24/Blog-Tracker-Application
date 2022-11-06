@@ -1,14 +1,7 @@
 ﻿@model IEnumerable<UI_layer.Models.empmodel>
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2><b>Employees List</b></h2>
-
 <p>
-    @Html.ActionLink("Add New", "Create")
-    @*<input type="submit" value="Add New" class="btn btn-success" onclick="Index.cshtml/>*@
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table table-hover">
     <tr>
@@ -27,27 +20,26 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfJoining)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PassCode)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.EmailId }) |
-
-                @Html.ActionLink("Delete", "Delete", new { id = item.EmailId })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfJoining)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PassCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.PassCode }) |
+         
+            @Html.ActionLink("Delete", "Delete", new { id = item.PassCode })
+        </td>
+    </tr>
+}
 
 </table>
